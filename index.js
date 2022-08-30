@@ -75,3 +75,112 @@ const managerPrompt = function () {
     })  
 };
 
+const addTeamMember = function () {
+    return inquirer.prompt ([
+        {
+            type: 'list',
+            name: 'role',
+            message: 'Which team member role would you like to add?',
+            choices: ['Engineer', 'Intern']
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please input the team member's name",
+            validate: memberName => {
+                if (memberName) {
+                    return true;
+                }
+                else {
+                    console.log("Team member name missing")
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the team member's ID?",
+            validate: memberID => {
+                if (isNaN(memberID)) {
+                    console.log("Please enter a valid numerical ID");
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the team member's email?",
+            validate: memberEmail => {
+                if (memberEmail) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter a valid email");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: "What is the Engineer's Github username?",
+            when: (input) => input.role === "Engineer",
+            validate: memberGithub => {
+                if (memberGithub) {   
+                    return true;
+                }
+                else {
+                    console.log("Required! Please enter their Github username")
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "What is the Intern's school name?",
+            when: (input) => input.role === "Intern",
+            validate: memberSchool => {
+                if (memberSchool) {   
+                    return true;
+                }
+                else {
+                    console.log("Required! Please enter their school")
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAddMember',
+            message: 'Would you like to add any additional team members?',
+            default: false
+        }
+    ]) 
+    .then(memberData => {
+        let {name, id, email, role, github, school, confirmAddMember} = memberData;
+        let member;
+
+        if (role === 'Engineer') {
+            member = new Engineer (name, id, email, github);
+        }
+        else if (role === 'Intern') {
+            member = new Intern (name, id, email, school)
+        }
+
+        employees.push(member);
+
+        if (confirmAddMember) {
+            return addTeamMember(employees);
+        }
+        else {
+            return employees;
+        }
+    })  
+};
+
