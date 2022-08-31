@@ -12,7 +12,7 @@ test('Should create an object', () => {
 test('Should grab the school property', () => {
     const testManager = new Manager('Davey', 86, 'davey@test-email.test', 1);
 
-    expect(testManager.officeNumber).toEqual(expect.any(Number));
+    expect(testManager.officeNumber).toEqual(1);
 });
 
 test('should return the correct role', () => {

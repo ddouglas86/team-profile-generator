@@ -12,7 +12,7 @@ test('Should create an object', () => {
 test('Should grab the school property', () => {
     const testIntern = new Intern('Davey', 86, 'davey@test-email.test', 'Test School');
 
-    expect(testIntern.school).toEqual('DaveyGit');
+    expect(testIntern.school).toEqual('Test School');
 });
 
 test('should return the correct role', () => {
