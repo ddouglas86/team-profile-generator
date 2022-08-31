@@ -40,7 +40,44 @@ const createIntern = function (intern) {
 </div>`;
 }
 
+createHTML = (data) => {
 
+    cardData = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole(); 
+
+
+        // call manager function
+        if (role === 'Manager') {
+            const managerCard = createManager(employee);
+
+            cardData.push(managerCard);
+        }
+
+        // call engineer function
+        if (role === 'Engineer') {
+            const engineerCard = createEngineer(employee);
+
+            cardData.push(engineerCard);
+        }
+
+        // call intern function 
+        if (role === 'Intern') {
+            const internCard = createIntern(employee);
+
+            cardData.push(internCard);
+        }
+}
+
+const teamCards = cardData.join('')
+
+    // return to generated page
+    const createTeam = createTeamProfile(teamCards); 
+    return createTeam;
+
+}
 
 const createTeamProfile = function (teamCards) {
     return `
@@ -69,7 +106,7 @@ const createTeamProfile = function (teamCards) {
           <div class="container">
               <div class="row justify-content-center" id="team-cards">
                   <!--Team Cards-->
-                  ${employeeCards}
+                  ${teamCards}
               </div>
           </div>
       </main>
