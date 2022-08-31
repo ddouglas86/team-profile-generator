@@ -5,7 +5,7 @@ const createHTML = require('./src/generateHTML');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { ConnectableObservable } = require('rxjs');
+
 
 const employees = [];
 

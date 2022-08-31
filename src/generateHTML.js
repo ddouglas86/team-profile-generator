@@ -20,7 +20,7 @@ const createEngineer = function (engineer) {
     <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
     <p class="id">ID: ${engineer.id}</p>
     <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-    <p class="github">Github: ${enginner.github}</p>
+    <p class="github">Github: ${engineer.github}</p>
     
   </div>
 </div>`;
