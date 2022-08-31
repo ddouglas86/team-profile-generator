@@ -17,7 +17,7 @@ const createEngineer = function (engineer) {
     <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${engineer.name}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
     <p class="id">ID: ${engineer.id}</p>
     <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
     <p class="github">Github: ${engineer.github}</p>
@@ -31,7 +31,7 @@ const createIntern = function (intern) {
     <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${intern.name}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
     <p class="id">ID: ${intern.id}</p>
     <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
     <p class="school">School: ${intern.school}</p>
