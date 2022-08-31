@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const createHTML = require('./src/generateHTML');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -184,3 +185,25 @@ const addTeamMember = function () {
     })  
 };
 
+
+
+
+managerPrompt()
+.then(addTeamMember)
+.then(employees => {
+    return createHTML(employees);
+})
+.then(data => {
+   fs.writeFile('./dist/index.html', data, err => {
+       if (err) {
+           console.log(err);
+           return;
+       }
+       else {
+           console.log('HTML creation successful!')
+       }
+   }) 
+})
+.catch(err => {
+    console.log(err);
+});
